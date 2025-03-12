@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private float rotationY = 0f;
     private Vector3 moveDirection;
 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+
+        animator.SetFloat("OnSpeed", Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z));
+        animator.SetBool("Grounded", IsGrounded());
     }
 
     void FixedUpdate()
@@ -42,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal"); // A y D
         float vertical = Input.GetAxis("Vertical"); // W y S
 
-        // Tomar la dirección de la cámara para mover al jugador
+        // Tomar la direcciï¿½n de la cï¿½mara para mover al jugador
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
         forward.y = 0; // Mantener el movimiento en plano
