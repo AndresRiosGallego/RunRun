@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2402003996572448430
+--- !u!1 &1998851807264405101
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6098234731109545774}
-  - component: {fileID: 1507966110659492485}
-  - component: {fileID: 8759921757883004150}
-  - component: {fileID: 4629199879747357139}
-  - component: {fileID: 7498263564225156168}
+  - component: {fileID: 6122691241566353836}
+  - component: {fileID: 6588767954083382166}
+  - component: {fileID: 4011138403215149600}
+  - component: {fileID: 768015691148032888}
   m_Layer: 0
-  m_Name: Props_8
-  m_TagString: Enemy
+  m_Name: FloorMove
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6098234731109545774
+--- !u!4 &6122691241566353836
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2402003996572448430}
+  m_GameObject: {fileID: 1998851807264405101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.76, y: -1.35, z: 0.45}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1507966110659492485
+--- !u!33 &6588767954083382166
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2402003996572448430}
-  m_Mesh: {fileID: -4951212787418725992, guid: 32812f864ffc68f45aa97b19014b7867, type: 3}
---- !u!23 &8759921757883004150
+  m_GameObject: {fileID: 1998851807264405101}
+  m_Mesh: {fileID: -768028402504110270, guid: 32812f864ffc68f45aa97b19014b7867, type: 3}
+--- !u!23 &4011138403215149600
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2402003996572448430}
+  m_GameObject: {fileID: 1998851807264405101}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,8 +65,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 5a7e3987da126b3448d7e55a9ec0fe97, type: 2}
+  - {fileID: 2100000, guid: 228d3ebd5ea75474e9e2536eaabc8a1f, type: 2}
+  - {fileID: 2100000, guid: fab313412e0d2c74789fda3ec4afed43, type: 2}
+  - {fileID: 2100000, guid: 2c09ef49c13be054891579dd4de949de, type: 2}
   - {fileID: 2100000, guid: 1e9f84486bb4bf74fa49fc80ba3c345c, type: 2}
-  - {fileID: 2100000, guid: 4bca999ab1da9294ea5d575e41073b88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,13 +91,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4629199879747357139
-CapsuleCollider:
+--- !u!65 &768015691148032888
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2402003996572448430}
+  m_GameObject: {fileID: 1998851807264405101}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,23 +109,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32011357
-  m_Height: 0.67335546
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7498263564225156168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2402003996572448430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb38e77c07892ad4a81c9d57dc870147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySound: {fileID: 8300000, guid: b2bbdb8314be63f4fb6ca76cfb1167d0, type: 3}
-  enemyParticles: {fileID: 5880797563141009103, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
-  velocityRotationSword: 250
+  serializedVersion: 3
+  m_Size: {x: 2.3284214, y: 0.22476465, z: 5.370822}
+  m_Center: {x: 0, y: 0.007804502, z: 0}

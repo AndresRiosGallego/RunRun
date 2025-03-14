@@ -6,29 +6,35 @@ public class EnemyMovement : MonoBehaviour
     public GameObject pointB;
     public float speed = 2f;
 
-    private bool movingToB = true;
+    private bool _movingToB = true;
+
+    public bool MovingToB { 
+        get 
+        {
+            return _movingToB; 
+        }
+        private set 
+        {
+            _movingToB = value; 
+        } 
+    }
 
     private void Awake()
     {
         pointA = transform.position;
     }
 
-    private void Update()
-    {
-        EnemyMoveSpotASpotB();
-    }
-
     public void EnemyMoveSpotASpotB()
     {
-        if (movingToB)
+        if (_movingToB)
         {
             transform.position = Vector3.MoveTowards(transform.position, pointB.transform.position, speed * Time.deltaTime);
-            if (transform.position == pointB.transform.position) movingToB = false;
+            if (transform.position == pointB.transform.position) _movingToB = false;
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, pointA, speed * Time.deltaTime);
-            if (transform.position == pointA) movingToB = true;
+            if (transform.position == pointA) _movingToB = true;
         }
     }
 }

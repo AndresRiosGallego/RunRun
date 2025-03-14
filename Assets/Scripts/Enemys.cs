@@ -10,7 +10,13 @@ public class Enemys : MonoBehaviour
     public AudioClip enemySound;
     public ParticleSystem enemyParticles;
     public float velocityRotationSword = 250f;
-    private bool movingToB = true;
+    public float velocityRotationLogRolling = 250f;
+    public float velMoveLogRolling = 2f;
+    public float velocityTransactionLogRolling = 2f;
+    public float velBalanceHammer = 2f;
+    public float maxAngleBalanceHammer = 20f;
+    private int _directionLogRolling = 1;
+    public float velocityRotationBalde = 250f;
 
     private void Awake()
     {
@@ -27,21 +33,70 @@ public class Enemys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateObject();
+        RotateAndMoveObject();
     }
 
-    void RotateObject() {
+    void RotateAndMoveObject() {
         switch (transform.gameObject.tag)
         {
             case "EnemySword":
                 RotateSword();
                 break;
             case "EnemyMinePosition":
-                //EnemyMovement.Ene
+                EnemyMovePositionAB();                
+                break;
+            case "EnemyHammer":
+                EnemyBalanceHammer();
+                break;
+            case "EnemyWallBadMove":
+                EnemyMovePositionAB();                
+                break;
+            case "EnemyLogRolling":
+                EnemyLogRolling();
+                break;
+            case "EnemyBlade":
+                EnemyBlade();
+                break;
+            case "EnemyMineBigMove":
+                EnemyMineBigMove();
                 break;
             default:
                 break;
         }
+    }
+
+    private void EnemyMineBigMove()
+    {
+        EnemyMovePositionAB();
+    }
+
+    private void EnemyBlade()
+    {
+        EnemyMovePositionAB();
+        transform.Rotate(new Vector3(velocityRotationBalde, 0, 0) * Time.deltaTime);
+    }
+
+    private void EnemyLogRolling()
+    {
+        EnemyMovePositionAB();
+        transform.Rotate(new Vector3(0, 0, velocityRotationLogRolling * _directionLogRolling) * Time.deltaTime);
+    }
+
+    private void EnemyBalanceHammer()
+    {
+        float angle = maxAngleBalanceHammer * Mathf.Sin(Time.time * velBalanceHammer); // Oscila entre -20 y 20
+        transform.localRotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    private void EnemyMovePositionAB()
+    {
+        EnemyMovement enemyMovement = transform.gameObject.GetComponent<EnemyMovement>();
+        enemyMovement.EnemyMoveSpotASpotB();
+        if (enemyMovement.MovingToB)
+            _directionLogRolling = 1;
+        else
+            _directionLogRolling = -1;
+
     }
 
     void RotateSword()
@@ -51,7 +106,10 @@ public class Enemys : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ResetPosition();
+        if (other != null) { 
+            if(other.gameObject.CompareTag("Player"))
+                ResetPosition();
+        }
     }
 
     private void ResetPosition()

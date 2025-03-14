@@ -9,6 +9,12 @@ TagManager:
   - Enemy
   - EnemySword
   - EnemyMinePosition
+  - EnemyHammer
+  - EnemyWallBadMove
+  - EnemyLogRolling
+  - EnemyBlade
+  - EnemyMineBig
+  - EnemyMineBigMove
   - FxTemporaire
   layers:
   - Default
