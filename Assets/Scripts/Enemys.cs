@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Enemys : MonoBehaviour
 {
-    //VARIABLES
+    #region Variables
     Vector3 firsPosition;
     GameObject player;
-    
+
     public AudioClip enemySound;
     public ParticleSystem enemyParticles;
     public float velocityRotationSword = 250f;
@@ -16,7 +16,8 @@ public class Enemys : MonoBehaviour
     public float velBalanceHammer = 2f;
     public float maxAngleBalanceHammer = 20f;
     private int _directionLogRolling = 1;
-    public float velocityRotationBalde = 250f;
+    public float velocityRotationBalde = 250f; 
+    #endregion
 
     private void Awake()
     {

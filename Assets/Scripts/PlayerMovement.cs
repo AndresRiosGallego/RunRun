@@ -4,10 +4,13 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     float moveX, moveY;
+    [SerializeField]
     public float speed = 5f;
+    [SerializeField]
     public float jumpForce = 7f;
+    [SerializeField]
     public float sensitivity = 2f;
-    public float airControl = 0.5f;
+    //public float airControl = 0.5f;
 
     private Rigidbody rb;
     public Transform cameraTransform;

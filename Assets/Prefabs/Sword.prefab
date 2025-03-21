@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb38e77c07892ad4a81c9d57dc870147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySound: {fileID: 8300000, guid: b2bbdb8314be63f4fb6ca76cfb1167d0, type: 3}
+  enemySound: {fileID: 8300000, guid: b80f5a4420688e34e86480803341680b, type: 3}
   enemyParticles: {fileID: 5880797563141009103, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   velocityRotationSword: 250
   velocityRotationLogRolling: 250
@@ -243,3 +243,4 @@ MonoBehaviour:
   velocityTransactionLogRolling: 2
   velBalanceHammer: 2
   maxAngleBalanceHammer: 20
+  velocityRotationBalde: 250

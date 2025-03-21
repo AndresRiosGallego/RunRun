@@ -21,7 +21,7 @@ public class Points : MonoBehaviour
 
     void RotatePoint()
     {
-        transform.Rotate(new Vector3(15, 45, 30) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 20, 0) * Time.deltaTime);
     }
 
     public void GetPoints()

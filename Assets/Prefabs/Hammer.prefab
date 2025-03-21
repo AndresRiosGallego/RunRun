@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6106546460698408732}
   m_Layer: 0
   m_Name: Hammer
-  m_TagString: Untagged
+  m_TagString: EnemyHammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5653295562161852488}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.96, y: 2.74, z: -2.82}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,11 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb38e77c07892ad4a81c9d57dc870147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySound: {fileID: 0}
-  enemyParticles: {fileID: 0}
+  enemySound: {fileID: 8300000, guid: b80f5a4420688e34e86480803341680b, type: 3}
+  enemyParticles: {fileID: 5880797563141009103, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   velocityRotationSword: 250
+  velocityRotationLogRolling: 250
+  velMoveLogRolling: 2
+  velocityTransactionLogRolling: 2
   velBalanceHammer: 2
-  maxBalanceHammer: 20
+  maxAngleBalanceHammer: 20
+  velocityRotationBalde: 250
 --- !u!136 &6106546460698408732
 CapsuleCollider:
   m_ObjectHideFlags: 0
