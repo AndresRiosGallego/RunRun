@@ -4,25 +4,33 @@ using UnityEngine;
 public class Enemys : MonoBehaviour
 {
     #region Variables
-    Vector3 firsPosition;
-    GameObject player;
-
+    Vector3 _firsPosition;
+    GameObject _player;
+    [SerializeField]
     public AudioClip enemySound;
+    [SerializeField]
     public ParticleSystem enemyParticles;
+    [SerializeField]
     public float velocityRotationSword = 250f;
+    [SerializeField]
     public float velocityRotationLogRolling = 250f;
+    [SerializeField]
     public float velMoveLogRolling = 2f;
+    [SerializeField]
     public float velocityTransactionLogRolling = 2f;
+    [SerializeField]
     public float velBalanceHammer = 2f;
-    public float maxAngleBalanceHammer = 20f;
+    [SerializeField]
+    public float maxAngleBalanceHammer = 20f;    
     private int _directionLogRolling = 1;
+    [SerializeField]
     public float velocityRotationBalde = 250f; 
     #endregion
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        firsPosition = player.transform.position;
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _firsPosition = _player.transform.position;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -133,8 +141,8 @@ public class Enemys : MonoBehaviour
             Destroy(particleSystem.gameObject, particleSystem.main.duration);
         }
 
-        if (player != null) { 
-            player.transform.position = firsPosition;
+        if (_player != null) { 
+            _player.transform.position = _firsPosition;
         }
     }
 }

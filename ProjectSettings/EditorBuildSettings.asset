@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 02a94dc60811b1540867a0913bdba053
   - enabled: 1
-    path: Assets/Package/Puzzle stage & settings GUI Pack/Demo Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/LV1.unity
     guid: 064cdda99bc653e4d91ad107e27b2d3d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LV2.unity
     guid: f7fe452c45ecff34a8646ae04f6649e7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LV3.unity
     guid: c25492c9900c8ff42a398ba021956127
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LV4.unity
     guid: 3fb9eb89bb967bd4caff1cfbad9b28bd
+  - enabled: 0
+    path: Assets/Package/Puzzle stage & settings GUI Pack/Demo Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

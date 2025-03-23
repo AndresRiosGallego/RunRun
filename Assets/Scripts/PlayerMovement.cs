@@ -3,7 +3,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float moveX, moveY;
+    #region Variables
+    float _moveX, _moveY;
     [SerializeField]
     public float speed = 5f;
     [SerializeField]
@@ -11,18 +12,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public float sensitivity = 2f;
     //public float airControl = 0.5f;
-
-    private Rigidbody rb;
+    private Rigidbody _rb;
+    [SerializeField]
     public Transform cameraTransform;
-
-    private float rotationY = 0f;
-    private Vector3 moveDirection;
-
-    public Animator animator;
+    private float _rotationY = 0f;
+    private Vector3 _moveDirection;
+    [SerializeField]
+    public Animator animator; 
+    #endregion
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         //cameraTransform = Camera.main.transform;
         //Cursor.lockState = CursorLockMode.Locked; // Oculta y bloquea el cursor al centro
     }
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
-        animator.SetFloat("OnSpeed", Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.z));
+        animator.SetFloat("OnSpeed", Mathf.Abs(_moveDirection.x) + Mathf.Abs(_moveDirection.z));
         animator.SetBool("Grounded", IsGrounded());
     }
 
@@ -56,10 +57,10 @@ public class PlayerMovement : MonoBehaviour
         forward.y = 0; // Mantener el movimiento en plano
         right.y = 0;
 
-        moveDirection = (forward * vertical + right * horizontal).normalized;
+        _moveDirection = (forward * vertical + right * horizontal).normalized;
 
         // Aplicar movimiento con Rigidbody
-        rb.MovePosition(rb.position + moveDirection * speed * Time.fixedDeltaTime);
+        _rb.MovePosition(_rb.position + _moveDirection * speed * Time.fixedDeltaTime);
     }
 
     //void OnMove(InputValue moveValue)
@@ -94,16 +95,16 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
         // Rotacion vertical de la camara
-        rotationY -= mouseY;
-        rotationY = Mathf.Clamp(rotationY, -90f, 90f); // Limita la rotacion vertical
-        cameraTransform.localRotation = Quaternion.Euler(rotationY, 0, 0);
+        _rotationY -= mouseY;
+        _rotationY = Mathf.Clamp(_rotationY, -90f, 90f); // Limita la rotacion vertical
+        cameraTransform.localRotation = Quaternion.Euler(_rotationY, 0, 0);
     }
 
     void Jump()
     {
         if (IsGrounded())
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 

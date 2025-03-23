@@ -1,10 +1,15 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Points : MonoBehaviour
 {
-    //VARIABLES
+
+    #region Variables
+    [SerializeField]
     public AudioClip pointSound;
-    public ParticleSystem pointParticles;
+    [SerializeField]
+    public ParticleSystem pointParticles; 
+    #endregion
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,6 +48,11 @@ public class Points : MonoBehaviour
         }
 
         GameManager.instance.AddPoint(1);
-        Destroy(gameObject);
+        
+        //Destroy(gameObject);
+        //gameObject.SetActive(false);
+
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 }
