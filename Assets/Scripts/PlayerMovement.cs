@@ -25,7 +25,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         //cameraTransform = Camera.main.transform;
-        //Cursor.lockState = CursorLockMode.Locked; // Oculta y bloquea el cursor al centro
+
+        Cursor.visible = false; // Hace visible el cursor
+        Cursor.lockState = CursorLockMode.None; // Oculta y bloquea el cursor al centro
     }
 
     void Update()

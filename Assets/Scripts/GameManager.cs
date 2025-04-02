@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,8 +72,8 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 1;
 
-        Cursor.lockState = CursorLockMode.Locked; // Desbloquea el cursor
-        Cursor.visible = true; // Hace visible el cursor
+        //Cursor.visible = true; // Hace visible el cursor
+        //Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
     }
 
 
@@ -91,14 +89,21 @@ public class GameManager : MonoBehaviour
 
     private void ControlKeyBoard()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
             if (panelPause.activeSelf)
             {
+                Cursor.visible = false; // Hace visible el cursor
+                Cursor.lockState = CursorLockMode.Locked; // Desbloquea el cursor
+
                 Time.timeScale = 1f;
                 panelPause.SetActive(false);
             }
             else
             {
+                Cursor.visible = true; // Hace visible el cursor
+                Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
+
                 Time.timeScale = 0f;
                 panelPause.SetActive(true);
             }
