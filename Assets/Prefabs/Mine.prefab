@@ -133,3 +133,6 @@ MonoBehaviour:
   velBalanceHammer: 2
   maxAngleBalanceHammer: 20
   velocityRotationBalde: 250
+  impulsoSpringY: 5
+  escalaMaxima: 1
+  velocidadEscala: 5

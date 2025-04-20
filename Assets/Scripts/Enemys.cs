@@ -24,7 +24,18 @@ public class Enemys : MonoBehaviour
     public float maxAngleBalanceHammer = 20f;    
     private int _directionLogRolling = 1;
     [SerializeField]
-    public float velocityRotationBalde = 250f; 
+    public float velocityRotationBalde = 250f;
+    [SerializeField]
+    public float impulsoSpringY = 5f; // Controla la fuerza del salto del player
+    
+    [SerializeField]
+    public float escalaMaxima = 1f;
+    [SerializeField]
+    public float velocidadEscala = 5f;
+
+    private Vector3 _escalaInicial;
+    private Vector3 _escalaEstirada;
+
     #endregion
 
     private void Awake()
@@ -36,7 +47,8 @@ public class Enemys : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _escalaInicial = transform.localScale;
+        _escalaEstirada = new Vector3(_escalaInicial.x, escalaMaxima, _escalaInicial.z);
     }
 
     // Update is called once per frame
@@ -68,11 +80,12 @@ public class Enemys : MonoBehaviour
                 break;
             case "EnemyMineBigMove":
                 EnemyMineBigMove();
-                break;
+                break;            
             default:
                 break;
         }
     }
+
 
     private void EnemyMineBigMove()
     {
@@ -115,13 +128,66 @@ public class Enemys : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null) { 
-            if(other.gameObject.CompareTag("Player"))
-                ResetPosition();
+        if (other != null) {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (this.gameObject.CompareTag("EnemySpring"))
+                    EnemySpring(other);
+                else
+                    ResetPosition();
+            }
+        }
+    }
+
+    private void EnemySpring(Collider other)
+    {
+        ActiavacionEfectosEnemy();
+        // Impulsar jugador
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // Estirar resorte
+            StopAllCoroutines();
+            StartCoroutine(EstirarResorte());
+
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // resetear Y
+            rb.AddForce(Vector3.up * impulsoSpringY, ForceMode.VelocityChange); // aplicar impulso
+            
+            //transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
+            //transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
+        }
+    }    
+
+    System.Collections.IEnumerator EstirarResorte()
+    {
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * velocidadEscala;
+            transform.localScale = Vector3.Lerp(_escalaInicial, _escalaEstirada, t);
+            yield return null;
+        }
+
+        // Volver a escala original
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime * velocidadEscala;
+            transform.localScale = Vector3.Lerp(_escalaEstirada, _escalaInicial, t);
+            yield return null;
         }
     }
 
     private void ResetPosition()
+    {
+        ActiavacionEfectosEnemy();
+        if (_player != null) { 
+            _player.transform.position = new Vector3(0f, 2.74f, -4.33f);
+            //_player.transform.position = _firsPosition;
+        }
+    }
+
+    private void ActiavacionEfectosEnemy()
     {
         //Instanciar Sonido
         if (enemySound != null)
@@ -141,8 +207,5 @@ public class Enemys : MonoBehaviour
             Destroy(particleSystem.gameObject, particleSystem.main.duration);
         }
 
-        if (_player != null) { 
-            _player.transform.position = _firsPosition;
-        }
     }
 }
